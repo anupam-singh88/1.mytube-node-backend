@@ -10,8 +10,10 @@ import errorHandler from './middlewares/errorHandler.middleware.js';
 import notFoundHandler from './middlewares/notFound.middleware.js';
 
 // Import routes
-import healthCheckRoutes from './routes/healthcheck.routes.js';
-import userRoutes from './routes/user.routes.js';
+import healthCheckRouter from './routes/healthcheck.routes.js';
+import userRouter from './routes/user.routes.js';
+import SubscriptionRouter from './routes/subscription.routes.js';
+import tweetRouter from './routes/tweet.routes.js';
 
 const app = express();
 
@@ -41,8 +43,10 @@ app.use(limiter);
 const apiVersion = config.API_VERSION || '/api/v1';
 
 // Routes Declaration
-app.use(`${apiVersion}/healthcheck`, healthCheckRoutes);
-app.use(`${apiVersion}/user`, userRoutes);
+app.use(`${apiVersion}/healthcheck`, healthCheckRouter);
+app.use(`${apiVersion}/user`, userRouter);
+app.use(`${apiVersion}/subscriptions`, SubscriptionRouter);
+app.use(`${apiVersion}/tweet`, tweetRouter);
 
 // Middleware to handle undefined routes(404)
 app.use(notFoundHandler);

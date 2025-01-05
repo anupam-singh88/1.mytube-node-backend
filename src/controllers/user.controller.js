@@ -438,7 +438,6 @@ export const getUserChannelProfile = asyncHandler(async (req, res) => {
         }
     ]);
 
-    // console.log(channel);
     if (!channel?.length) {
         throw new ApiError({ statusCode: 404, message: "channel doesnot exist" });
     }
