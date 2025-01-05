@@ -1,17 +1,18 @@
 import { v2 as cloudinary } from "cloudinary";
 import fs from "fs/promises";
-import { Logger } from "./utils/logger.js"; // Assuming a logger instance
+import Logger from "../utils/logger.js"; // Assuming a logger instance
+import config from "../config/index.js";
 
 cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
+    cloud_name: config.CLOUDINARY_CLOUD_NAME,
+    api_key: config.CLOUDINARY_API_KEY,
+    api_secret: config.CLOUDINARY_API_SECRET,
 });
 
 if (
-    !process.env.CLOUDINARY_CLOUD_NAME ||
-    !process.env.CLOUDINARY_API_KEY ||
-    !process.env.CLOUDINARY_API_SECRET
+    !config.CLOUDINARY_CLOUD_NAME ||
+    !config.CLOUDINARY_API_KEY ||
+    !config.CLOUDINARY_API_SECRET
 ) {
     throw new Error("Cloudinary configuration is missing in environment variables.");
 }
@@ -27,7 +28,7 @@ const uploadOnCloudinary = async (localFilePath) => {
             resource_type: "auto",
         });
 
-        Logger.info(`File uploaded to Cloudinary: ${result.url}`);
+        // Logger.info(`File uploaded to Cloudinary: ${result.url}`);
         await fs.unlink(localFilePath); // Remove file from local storage
         return result;
     } catch (error) {

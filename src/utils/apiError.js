@@ -9,7 +9,7 @@ class ApiError extends Error {
         metadata = {},
     }) {
         super(message);
-        this.message = message; 
+        this.message = message;
         this.statusCode = statusCode;
         this.errors = errors;
         this.data = data;
@@ -30,8 +30,8 @@ class ApiError extends Error {
             statusCode: this.statusCode,
             errors: this.errors,
             data: this.data,
-            metadata: this.metadata,
-            ...(process.env.NODE_ENV === 'development' && { stack: this.stack })
+            // metadata: this.metadata,
+            // ...(process.env.NODE_ENV === 'development' && { stack: this.stack })
         };
     }
 

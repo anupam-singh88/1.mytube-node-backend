@@ -1,0 +1,424 @@
+{
+	"info": {
+		"_postman_id": "437791b7-9b50-474c-ac79-f560ba5e49c0",
+		"name": "mytube",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29145752"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "regiser-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "{{$randomUserName}}",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "{{$randomEmail}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "fullName",
+									"value": "{{$randomFullName}}",
+									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/Anupam/Downloads/cheque.jpg"
+								},
+								{
+									"key": "coverImage",
+									"type": "file",
+									"src": "/C:/Users/Anupam/Downloads/WhatsApp Image 2025-01-05 at 12.04.57_87d5574b.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/user",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"pm.collectionVariables.set(\"accessToken\", jsonData?.data?.accessToken);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"hulda_rodriguez52@yahoo.com\",\r\n    \"password\":\"123456\",\r\n    \"username\":\"Anupam Singh\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/user/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/user/logout",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change-password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\":\"1234556\",\r\n    \"newPassword\":\"123455\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/user/change-password",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh-token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzE3NTcyZDIwMWMxMjA5YzE3Y2ZkNTUiLCJlbWFpbCI6ImJyaXRuZXkubWFya3NAZ21haWwuY29tIiwidXNlciI6InRyZW1heW5lLm1hcnZpbiIsImZ1bGxOYW1lIjoiTXVyaWVsIEJ1Y2tyaWRnZSIsImlhdCI6MTcyOTU4MjkyOCwiZXhwIjoxNzI5NjY5MzI4fQ.kila300vVb-yYhF8LZyUyw5Iy2TxMqjX4xDWlytLm7M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzE3NTcyZDIwMWMxMjA5YzE3Y2ZkNTUiLCJlbWFpbCI6ImJyaXRuZXkubWFya3NAZ21haWwuY29tIiwidXNlciI6InRyZW1heW5lLm1hcnZpbiIsImZ1bGxOYW1lIjoiTXVyaWVsIEJ1Y2tyaWRnZSIsImlhdCI6MTcyOTU5NDc2NCwiZXhwIjoxNzI5NjgxMTY0fQ.FiEfmeymF1vwD37Bbo9Kj-Exy6fZsv9RS2qMWCK4NXE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/refresh-token",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-user",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"anupamsingh2389@gmail.com\",\r\n    \"fullName\":\"Anupam Singh\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/user/update-user",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"update-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-avatar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/Anupam/Downloads/cheque.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/user/update-avatar",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"update-avatar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-cover-image",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "coverImage",
+									"type": "file",
+									"src": "/C:/Users/Anupam/Downloads/WhatsApp Image 2025-01-05 at 12.04.57_87d5574b.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/user/update-coverImg?coverImage",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"update-coverImg"
+							],
+							"query": [
+								{
+									"key": "coverImage",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-current-user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/user/current-user",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"current-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-channel-profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/c/tremayne.marvin",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"c",
+								"tremayne.marvin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "watch-history",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/watch-history",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"watch-history"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "healthcheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/healthcheck",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzdhODkxODc0NmZkZDY3MzMzODg1OWIiLCJlbWFpbCI6InJvbWFpbmUuaGVybWlzdG9uMzhAZ21haWwuY29tIiwidXNlcm5hbWUiOiJzYWx2YXRvcmU5OCIsImZ1bGxOYW1lIjoiUGVhcmwgU2NodWx0eiIsImlhdCI6MTczNjA4NDI3MCwiZXhwIjoxNzM2MTcwNjcwfQ.bdYFzVlz9qxgrL2N2NW-MrYnSDIN91ye0g-GDn-eqEA",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:3000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "accessToken",
+			"value": ""
+		}
+	]
+}

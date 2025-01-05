@@ -6,10 +6,12 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import config from './config/index.js';
 
-// Import routes
-import healthCheckRoutes from './routes/healthcheck.routes.js';
 import errorHandler from './middlewares/errorHandler.middleware.js';
 import notFoundHandler from './middlewares/notFound.middleware.js';
+
+// Import routes
+import healthCheckRoutes from './routes/healthcheck.routes.js';
+import userRoutes from './routes/user.routes.js';
 
 const app = express();
 
@@ -40,6 +42,7 @@ const apiVersion = config.API_VERSION || '/api/v1';
 
 // Routes Declaration
 app.use(`${apiVersion}/healthcheck`, healthCheckRoutes);
+app.use(`${apiVersion}/user`, userRoutes);
 
 // Middleware to handle undefined routes(404)
 app.use(notFoundHandler);
