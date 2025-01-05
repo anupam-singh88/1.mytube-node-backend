@@ -7,5 +7,9 @@ export const healthCheckController = asyncHandler(async (req, res) => {
     const message = "Server is up and running";
     return res
         .status(HTTP_STATUS.OK)
-        .json(new ApiResponse(HTTP_STATUS.OK, null, message));
+        .json(new ApiResponse({
+            statusCode: HTTP_STATUS.OK,
+            data: null,
+            message
+        }));
 });

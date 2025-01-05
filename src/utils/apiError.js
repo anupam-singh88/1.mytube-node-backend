@@ -9,6 +9,7 @@ class ApiError extends Error {
         metadata = {},
     }) {
         super(message);
+        this.message = message; 
         this.statusCode = statusCode;
         this.errors = errors;
         this.data = data;
@@ -20,6 +21,18 @@ class ApiError extends Error {
         } else {
             Error.captureStackTrace(this, this.constructor);
         }
+    }
+
+    toJSON() {
+        return {
+            success: this.success,
+            message: this.message,
+            statusCode: this.statusCode,
+            errors: this.errors,
+            data: this.data,
+            metadata: this.metadata,
+            ...(process.env.NODE_ENV === 'development' && { stack: this.stack })
+        };
     }
 
     static badRequest(message = 'Bad Request', errors = []) {

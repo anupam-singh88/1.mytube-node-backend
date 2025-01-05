@@ -7,7 +7,6 @@ dotenv.config({ path: './.env' });
 const startServer = async () => {
     try {
         await connectToDB();
-        // logger.info('Connected to the database successfully.');
 
         const PORT = process.env.PORT || 8000;
         const server = app.listen(PORT, () => {
