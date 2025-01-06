@@ -1,9 +1,12 @@
+import mongoose from 'mongoose'
+
 import { User } from "../models/user.model.js";
+
+import logger from '../utils/logger.js';
 import ApiError from "../utils/ApiError.js";
 import ApiResponse from "../utils/ApiResposne.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import { deleteOnCloudinary, uploadOnCloudinary } from "../utils/cloudinary.js";
-import mongoose from 'mongoose'
 
 const COOKIE_OPTIONS = {
     httpOnly: true,
@@ -73,8 +76,8 @@ export const registerUser = asyncHandler(async (req, res) => {
         coverImageLocalPath = req.files.coverImage[0].path;
     }
 
-    const avatar = await uploadOnCloudinary(avatarLocalPath).catch((error) => console.log(error))
-    const coverImage = coverImageLocalPath ? await uploadOnCloudinary(coverImageLocalPath) : null;
+    const avatar = await uploadOnCloudinary(avatarLocalPath).catch((error) => logger.error(error))
+    const coverImage = coverImageLocalPath ? await uploadOnCloudinary(coverImageLocalPath).catch((error) => logger.error(error)) : null;
 
     if (!avatar) {
         throw new ApiError({
@@ -303,7 +306,7 @@ export const updateUserAvatar = asyncHandler(async (req, res) => {
         throw new ApiError({ statusCode: 400, message: "Avatar file is missing" });
     }
 
-    const avatar = await uploadOnCloudinary(avatarLocalPath);
+    const avatar = await uploadOnCloudinary(avatarLocalPath).catch((error) => logger.error(error));
 
     if (!avatar.url) {
         throw new ApiError({ statusCode: 400, message: "Error while uploading avatar" });

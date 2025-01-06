@@ -52,26 +52,21 @@ export const toggleSubscription = asyncHandler(async (req, res) => {
 
 
 export const getChannelSubscribers = asyncHandler(async (req, res) => {
-    // Extract channelId from the request parameters
     let { channelId } = req.params;
 
-    // Validate channelId to ensure it is a valid MongoDB ObjectId
     if (!isValidObjectId(channelId)) {
         return res.status(400).json(
             new ApiError({
                 statusCode: 400,
-                message: "Invalid channel id", // Return error if channelId is invalid
+                message: "Invalid channel id",
             })
         );
     }
 
-    // Convert channelId to a MongoDB ObjectId for compatibility in queries
     channelId = new mongoose.Types.ObjectId(channelId);
 
-    // Perform an aggregation query on the Subscription collection
     const subscribers = await Subscription.aggregate([
         {
-            // Step 1: Match subscriptions where the channel matches the given channelId
             $match: {
                 channel: channelId,
             },
