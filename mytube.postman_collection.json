@@ -41,11 +41,6 @@
 									"key": "avatar",
 									"type": "file",
 									"src": "/C:/Users/Anupam/Downloads/cheque.jpg"
-								},
-								{
-									"key": "coverImage",
-									"type": "file",
-									"src": "/C:/Users/Anupam/Downloads/WhatsApp Image 2025-01-05 at 12.04.57_87d5574b.jpg"
 								}
 							]
 						},
@@ -82,7 +77,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"hulda_rodriguez52@yahoo.com\",\r\n    \"password\":\"123456\",\r\n    \"username\":\"Anupam Singh\"\r\n}",
+							"raw": "{\r\n    \"email\":\"mattie4@yahoo.com\",\r\n    \"password\":\"123456\",\r\n    \"username\":\"Anupam Singh\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -327,14 +322,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/users/c/tremayne.marvin",
+							"raw": "{{host}}/user/c/zola_mckenzie39",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"users",
+								"user",
 								"c",
-								"tremayne.marvin"
+								"zola_mckenzie39"
 							]
 						}
 					},
@@ -346,13 +341,777 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/users/watch-history",
+							"raw": "{{host}}/user/watch-history",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"users",
+								"user",
 								"watch-history"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "subscrption",
+			"item": [
+				{
+					"name": "get-channel-subscriber",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/subscriptions/c/677a94144d2c77eda19966d1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"subscriptions",
+								"c",
+								"677a94144d2c77eda19966d1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "toggle-subs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/subscriptions/c/677a94144d2c77eda19966d1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"subscriptions",
+								"c",
+								"677a94144d2c77eda19966d1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-subscribed-channels",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/subscriptions/u/677abe16955aaac0693b906b",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"subscriptions",
+								"u",
+								"677abe16955aaac0693b906b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tweet",
+			"item": [
+				{
+					"name": "get-tweet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/tweet/user/677abe16955aaac0693b906b",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tweet",
+								"user",
+								"677abe16955aaac0693b906b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-tweet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\":\"third tweet\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/tweet",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tweet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "udpate-tweet",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\":\"Second tweet edited\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/tweet/677ac8138b7c97a17795eb9d",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tweet",
+								"677ac8138b7c97a17795eb9d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-tweet",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/tweet/677ac8618b7c97a17795eba7",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tweet",
+								"677ac8618b7c97a17795eba7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "video",
+			"item": [
+				{
+					"name": "get-all-videos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/video",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"video"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upload-video",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "videoFile",
+									"type": "file",
+									"src": "/C:/Users/Anupam/Downloads/chatt-reel.mp4"
+								},
+								{
+									"key": "thumbnail",
+									"type": "file",
+									"src": "/C:/Users/Anupam/Downloads/models.png"
+								},
+								{
+									"key": "title",
+									"value": "First video",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "native",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/video",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"video"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-video-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/video/v/677b5a0b1a80e5e0334fbdcb",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"video",
+								"v",
+								"677b5a0b1a80e5e0334fbdcb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-video-by-id Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/video/v/677b57ee1a80e5e0334fbd8a",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"video",
+								"v",
+								"677b57ee1a80e5e0334fbd8a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-video",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "udpated title",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "udapted desc",
+									"type": "text"
+								},
+								{
+									"key": "thumbnail",
+									"type": "file",
+									"src": "/C:/Users/Anupam/Downloads/cheque.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/video/v/677b59021a80e5e0334fbd9a",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"video",
+								"v",
+								"677b59021a80e5e0334fbd9a"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "toggle-publish-status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/video/toggle/publish/677b5a0b1a80e5e0334fbdcb",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"video",
+								"toggle",
+								"publish",
+								"677b5a0b1a80e5e0334fbdcb"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "likes",
+			"item": [
+				{
+					"name": "get-liked-videos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/likes/videos",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"likes",
+								"videos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "toggle-video-like",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/likes/toggle/v/677b5a0b1a80e5e0334fbdcb",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"likes",
+								"toggle",
+								"v",
+								"677b5a0b1a80e5e0334fbdcb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "toggle-comment-like",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/likes/toggle/c/677b5dd43cfa66d34a6529b9",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"likes",
+								"toggle",
+								"c",
+								"677b5dd43cfa66d34a6529b9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "toggle-tweet-like",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/likes/toggle/t/677ac7d98b7c97a17795eb98",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"likes",
+								"toggle",
+								"t",
+								"677ac7d98b7c97a17795eb98"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comments",
+			"item": [
+				{
+					"name": "get-video-comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/comment/677b5a0b1a80e5e0334fbdcb",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"comment",
+								"677b5a0b1a80e5e0334fbdcb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-video-comments",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "content",
+									"value": "cont",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/comment/677b5a0b1a80e5e0334fbdcb",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"comment",
+								"677b5a0b1a80e5e0334fbdcb"
+							],
+							"query": [
+								{
+									"key": "conent",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delet-video-comments",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "content",
+									"value": "cont",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/comment/c/677b5d843cfa66d34a6529a4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"comment",
+								"c",
+								"677b5d843cfa66d34a6529a4"
+							],
+							"query": [
+								{
+									"key": "conent",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-video-comments",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "content",
+									"value": "cont",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/comment/c/677b5dd43cfa66d34a6529b9",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"comment",
+								"c",
+								"677b5dd43cfa66d34a6529b9"
+							],
+							"query": [
+								{
+									"key": "conent",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "playlist",
+			"item": [
+				{
+					"name": "create-playlist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"{{$randomFirstName}}\",\r\n    \"description\":\"{{$randomJobDescriptor}}\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/playlist",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"playlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-playlist-by-id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"{{$randomFirstName}}\",\r\n    \"description\":\"{{$randomJobDescriptor}}\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/playlist/677b738933d8340c4cde9bcb",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"playlist",
+								"677b738933d8340c4cde9bcb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-playlist-by-id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"{{$randomFirstName}}\",\r\n    \"description\":\"{{$randomJobDescriptor}}\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/playlist/677b734733d8340c4cde9bb8",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"playlist",
+								"677b734733d8340c4cde9bb8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-playlist-by-id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"{{$randomFirstName}}\",\r\n    \"description\":\"{{$randomJobDescriptor}}\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/playlist/677b734733d8340c4cde9bb8",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"playlist",
+								"677b734733d8340c4cde9bb8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-playlist-by-id Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"{{$randomFirstName}}\",\r\n    \"description\":\"{{$randomJobDescriptor}}\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/playlist/677b72030ed8136eeb08efaf",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"playlist",
+								"677b72030ed8136eeb08efaf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-video-playlist",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/playlist/add/677b5a0b1a80e5e0334fbdcb/677b738933d8340c4cde9bcb",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"playlist",
+								"add",
+								"677b5a0b1a80e5e0334fbdcb",
+								"677b738933d8340c4cde9bcb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-video-playlist",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/playlist/add/677b5a0b1a80e5e0334fbdcb/677b738933d8340c4cde9bcb",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"playlist",
+								"add",
+								"677b5a0b1a80e5e0334fbdcb",
+								"677b738933d8340c4cde9bcb"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dashboard",
+			"item": [
+				{
+					"name": "get-channel-stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/dashboard/stats",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"dashboard",
+								"stats"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-channel-videos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/dashboard/videos",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"dashboard",
+								"videos"
 							]
 						}
 					},

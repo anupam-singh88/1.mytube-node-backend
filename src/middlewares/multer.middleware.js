@@ -9,7 +9,9 @@ if (!fs.existsSync(uploadDir)) {
 }
 
 // Define allowed file types (example: images)
-const allowedFileTypes = /jpeg|jpg|png|gif|pdf/;
+// const allowedFileTypes = /jpeg|jpg|png|gif|pdf/;
+//allow all types
+const allowedFileTypes = /.*/;
 
 // Define storage configuration
 const storage = multer.diskStorage({

@@ -1,4 +1,4 @@
-import ApiError from "../utils/apiError.js";
+import ApiError from "../utils/ApiError.js";
 import ApiResponse from "../utils/ApiResposne.js";
 import { HTTP_STATUS } from "../utils/httpStatus.js";
 import logger from "../utils/logger.js";
